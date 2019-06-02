@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const feedRoutes = require('./routes/feed');
+const feedRoutes = require('./routes/api');
 
 const app = express();
 
@@ -15,11 +15,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/feed', feedRoutes);
+app.use('/api', feedRoutes);
 
 mongoose
     .connect(
-        'mongodb+srv://admin:r5d4bJWRoyUVD4aA@cluster0-ydvjq.mongodb.net/test?retryWrites=true&w=majority'
+        'mongodb+srv://admin:r5d4bJWRoyUVD4aA@cluster0-ydvjq.mongodb.net/messages?retryWrites=true&w=majority'
     )   
     .then(result => {
         app.listen(8080);
